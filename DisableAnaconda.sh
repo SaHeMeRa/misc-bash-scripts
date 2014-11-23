@@ -16,8 +16,8 @@ else
 
 
 if [ "$enable" = true ]; then
-    cat ./.local/share/$TEMPPATH >> ~/.bashrc
-    rm ./.local/share/$TEMPPATH
+    cat ~/.local/share/$TEMPPATH >> ~/.bashrc
+    rm ~/.local/share/$TEMPPATH
     echo "Creating DisableAnaconda.sh"
     mv ./EnableAnaconda.sh ./DisableAnaconda.sh
 else
@@ -27,7 +27,7 @@ else
     linenum=${in%:*}
 
     #copy the lines into a new temporary file
-   cat ~/.bashrc | sed -e $linenum,$((linenum+ANACONDALINES-1))!d > ./.local/share/$TEMPPATH
+   cat ~/.bashrc | sed -e $linenum,$((linenum+ANACONDALINES-1))!d > ~/.local/share/$TEMPPATH
     
     #remove lines from .bashrc
    cat ~/.bashrc | sed -e $linenum,$((linenum+ANACONDALINES-1))d > ~/.bashrx
